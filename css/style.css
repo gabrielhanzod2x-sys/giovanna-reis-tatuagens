@@ -770,7 +770,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .carrossel{
   position:relative;
   display:flex; align-items:center; gap:clamp(6px,1.4vw,24px);
-  width:100%; max-width:1480px;
+  width:100%; max-width:1720px;
 }
 
 .carrossel__janela{
@@ -796,7 +796,7 @@ ul{ margin:0; padding:0; list-style:none; }
 /* ---- cartão de tattoo ---- */
 .cartao{
   flex:0 0 auto;
-  width:clamp(232px,21vw,330px);
+  width:clamp(310px,27vw,440px);
   cursor:pointer;
   transition:
     transform 1.25s cubic-bezier(.2,.7,.25,1),
@@ -832,7 +832,7 @@ ul{ margin:0; padding:0; list-style:none; }
 /* cartão em destaque (centro do carrossel) */
 .cartao.is-destaque{
   filter:brightness(1.04) saturate(1);
-  transform:scale(1.12);
+  transform:scale(1.14);
   z-index:5;
 }
 .cartao.is-destaque .mold__arte{
@@ -848,7 +848,7 @@ ul{ margin:0; padding:0; list-style:none; }
   transform:scale(1.06);
   z-index:6;
 }
-.cartao.is-destaque:hover{ transform:scale(1.16); }
+.cartao.is-destaque:hover{ transform:scale(1.18); }
 .cartao:hover .mold__janela img{ transform:scale(1.07); }
 .cartao:hover .cartao__etiqueta{ opacity:1; transform:translateX(-50%) translateY(0); }
 
@@ -2015,7 +2015,7 @@ ul{ margin:0; padding:0; list-style:none; }
     -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
             mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
   }
-  .cartao{ width:clamp(172px,54vw,210px); }
+  .cartao{ width:clamp(240px,70vw,300px); }
   .cartao__etiqueta{
     font-size:10.5px; padding:6px 10px;
     white-space:normal; text-align:center; line-height:1.3;
