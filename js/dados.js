@@ -83,10 +83,10 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t07-boneca.webp",
-      alt: "Tatuagem colorida de criatura rosa de três olhos verdes",
-      titulo: "A criatura de três olhos",
+      alt: "Tatuagem colorida de criatura rosa de quatro olhos verdes",
+      titulo: "A criatura de quatro olhos",
       frase: "Olha de volta quem é olhado demais.",
-      descricao: "Uma criatura rosa encolhida, de orelhas pontudas e três olhos verdes de cílios longos — o terceiro na bochecha. Ao lado dela, uma mariposa e um par de brilhos em rosa.\n\nContorno preto fechado e cor chapada por dentro: é o registro mais old school de todo o conjunto, e o único em cor cheia.",
+      descricao: "Uma criatura rosa encolhida, de orelhas pontudas e quatro olhos verdes de cílios longos espalhados pelo rosto. Ao lado dela, uma mariposa e um par de brilhos em rosa.\n\nContorno preto fechado e cor chapada por dentro: é o registro mais old school de todo o conjunto, e o único em cor cheia.",
       historia: ""
     },
     {
