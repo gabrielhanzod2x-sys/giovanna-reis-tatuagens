@@ -38,8 +38,9 @@ window.DADOS = {
   tattoos: [
     {
       arquivo: "assets/tattoos/t01-gato.webp",
-      arquivoAlta: "assets/tattoos/t01-gato-original.png",
-      alt: "Tatuagem de gato preto entre estrelas na perna",
+
+      arquivoAlta: "assets/tattoos/t01-gato-4k.webp",
+      alt: "Tattoo de gato preto entre estrelas na perna",
       titulo: "Gato entre estrelas",
       frase: "Quem caminha com a noite nunca caminha só.",
       descricao: "Um gato preto de corpo alongado e cauda em espiral, fechado em preto sólido. Em volta dele, estrelas de quatro pontas e fiozinhos de pontilhado. O brilho da peça não vem de tinta clara — vem do que ficou de pele em branco.",
@@ -47,8 +48,9 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t03-morcego-lua-b.webp",
-      arquivoAlta: "assets/tattoos/t03-morcego-lua-b-original.jpg",
-      alt: "Tatuagem de criatura alada sob lua crescente no joelho",
+
+      arquivoAlta: "assets/tattoos/t03-morcego-lua-b-4k.webp",
+      alt: "Tattoo de criatura alada sob lua crescente no joelho",
       titulo: "Criatura alada sob a lua",
       frase: "Nem tudo que tem asas foi feito para o céu.",
       descricao: "Uma criatura de orelhas longas e asas membranosas, aberta sobre o joelho. Atrás dela, uma lua crescente em vermelho-vinho; abaixo, uma estrela de oito pontas na mesma tinta. O corpo é todo traço fino, com sombra leve só no peito e nas dobras da asa.",
@@ -56,8 +58,9 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t04-jack.webp",
-      arquivoAlta: "assets/tattoos/t04-jack-original.jpg",
-      alt: "Tatuagem de Jack Skellington e Zero em moldura, no ombro",
+
+      arquivoAlta: "assets/tattoos/t04-jack-4k.webp",
+      alt: "Tattoo de Jack Skellington e Zero em moldura, no ombro",
       titulo: "Jack Skellington e Zero",
       obra: "O Estranho Mundo de Jack · Tim Burton, 1993",
       frase: "O que se promete de osso a osso, o tempo não desfaz.",
@@ -66,8 +69,9 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t05-rosa.webp",
-      arquivoAlta: "assets/tattoos/t05-rosa-original.jpg",
-      alt: "Tatuagem de rosa vermelha com pétalas caindo, no braço",
+
+      arquivoAlta: "assets/tattoos/t05-rosa-4k.webp",
+      alt: "Tattoo de rosa vermelha com pétalas caindo, no braço",
       titulo: "A rosa e as pétalas",
       frase: "Toda rosa guarda a lembrança do que deixou cair.",
       descricao: "Uma rosa vermelha de caule longo descendo pelo braço, com folhas verdes e espinhos marcados um a um. Abaixo da flor, pétalas soltas caem seguindo a linha do braço. Cor fechada, sem contorno preto pesado.",
@@ -75,7 +79,9 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t06-lirios.webp",
-      alt: "Tatuagem de lírios em blackwork no antebraço",
+
+      arquivoAlta: "assets/tattoos/t06-lirios-4k.webp",
+      alt: "Tattoo de lírios em blackwork no antebraço",
       titulo: "Lírios em blackwork",
       frase: "Flor que nasce no escuro aprende a brilhar sozinha.",
       descricao: "Um ramo de lírios abertos ocupando o antebraço. As pétalas são construídas em linha fina e sombra pontilhada; as folhas, em traço mais firme. Blackwork inteiro, sem uma gota de cor.",
@@ -83,7 +89,9 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t07-boneca.webp",
-      alt: "Tatuagem colorida de criatura rosa de quatro olhos verdes",
+
+      arquivoAlta: "assets/tattoos/t07-boneca-4k.webp",
+      alt: "Tattoo colorida de criatura rosa de quatro olhos verdes",
       titulo: "A criatura de quatro olhos",
       frase: "Olha de volta quem é olhado demais.",
       descricao: "Uma criatura rosa encolhida, de orelhas pontudas e quatro olhos verdes de cílios longos espalhados pelo rosto. Ao lado dela, uma mariposa e um par de brilhos em rosa.\n\nContorno preto fechado e cor chapada por dentro: é o registro mais old school de todo o conjunto, e o único em cor cheia.",
@@ -91,7 +99,9 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t08-caveira.webp",
-      alt: "Tatuagem de caveira com fitas e ornamentos",
+
+      arquivoAlta: "assets/tattoos/t08-caveira-4k.webp",
+      alt: "Tattoo de caveira com fitas e ornamentos",
       titulo: "Caveira e fitas",
       frase: "A caveira é o retrato que todos nós vamos ter.",
       descricao: "Uma caveira inclinada, com fitas e ornamentos se enrolando ao redor dela. Pontilhado nas cavidades para dar profundidade, linha limpa em todo o contorno.",
@@ -99,7 +109,9 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t10-pescoco.webp",
-      alt: "Tatuagem ornamental com morcego no pescoço",
+
+      arquivoAlta: "assets/tattoos/t10-pescoco-4k.webp",
+      alt: "Tattoo ornamental com morcego no pescoço",
       titulo: "Ornamental no pescoço",
       frase: "Há quem use a noite como quem usa uma joia.",
       descricao: "Uma peça ornamental centrada no pescoço: um morcego no meio e traços simétricos abrindo para os dois lados, descendo até as clavículas. Desenhada para acompanhar o pescoço — é o corpo que dita o formato.",
@@ -107,7 +119,9 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t11-noiva-processo.webp",
-      alt: "Processo de tatuagem da Noiva Cadáver em moldura, no braço",
+
+      arquivoAlta: "assets/tattoos/t11-noiva-processo-4k.webp",
+      alt: "Processo de tattoo da Noiva Cadáver em moldura, no braço",
       titulo: "Emily, a Noiva Cadáver",
       obra: "A Noiva Cadáver · Tim Burton, 2005",
       frase: "Antes de ficar para sempre, tudo começa como risco.",
@@ -116,7 +130,9 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t12-braco.webp",
-      alt: "Tatuagem de chamas em blackwork descendo pelo antebraço",
+
+      arquivoAlta: "assets/tattoos/t12-braco-4k.webp",
+      alt: "Tattoo de chamas em blackwork descendo pelo antebraço",
       titulo: "Chamas no antebraço",
       frase: "O fogo não pede licença para tomar o seu lugar.",
       descricao: "Chamas em blackwork descendo do cotovelo até o pulso, só contorno, sem preenchimento. A pele que fica livre entre as linhas é o que faz o fogo parecer vivo.",
@@ -124,7 +140,9 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t13-dama.webp",
-      alt: "Tatuagem de dama em moldura ornamentada, na coxa",
+
+      arquivoAlta: "assets/tattoos/t13-dama-4k.webp",
+      alt: "Tattoo de dama em moldura ornamentada, na coxa",
       titulo: "A dama na moldura",
       frase: "Toda moldura é um pedido para que se olhe duas vezes.",
       descricao: "Uma figura feminina de cabelos volumosos e vestido de renda, parada dentro de uma moldura barroca de espelho. Em volta do desenho, uma nuvem de pontilhado se abrindo pela coxa, como se a moldura estivesse se desfazendo na pele.",
@@ -132,7 +150,9 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t14-edward.webp",
-      alt: "Tatuagem de Edward Mãos de Tesoura em moldura, no antebraço",
+
+      arquivoAlta: "assets/tattoos/t14-edward-4k.webp",
+      alt: "Tattoo de Edward Mãos de Tesoura em moldura, no antebraço",
       titulo: "Edward Mãos de Tesoura",
       obra: "Edward Mãos de Tesoura · Tim Burton, 1990",
       frase: "Há mãos que só sabem criar ferindo.",
@@ -141,7 +161,9 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t15-noiva.webp",
-      alt: "Tatuagem de figura de Papai Noel em painel listrado, no antebraço",
+
+      arquivoAlta: "assets/tattoos/t15-noiva-4k.webp",
+      alt: "Tattoo de figura de Papai Noel em painel listrado, no antebraço",
       titulo: "O Noel no painel listrado",
       frase: "Cada peça nova conversa com a que já estava ali.",
       descricao: "Uma figura de Papai Noel encurvada, de barba longa e casaco de pele, dentro de um painel com listras de bengala doce e azevinho nos cantos. Flocos de neve e estrelas se espalham pela pele ao redor.\n\nFica logo acima da moldura do Edward: é o mesmo braço, sendo montado peça por peça dentro do mesmo universo.",
