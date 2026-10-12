@@ -38,6 +38,7 @@ window.DADOS = {
   tattoos: [
     {
       arquivo: "assets/tattoos/t01-gato.webp",
+      arquivoAlta: "assets/tattoos/t01-gato-original.png",
       alt: "Tatuagem de gato preto entre estrelas na perna",
       titulo: "Gato entre estrelas",
       frase: "Quem caminha com a noite nunca caminha só.",
@@ -46,6 +47,7 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t03-morcego-lua-b.webp",
+      arquivoAlta: "assets/tattoos/t03-morcego-lua-b-original.jpg",
       alt: "Tatuagem de criatura alada sob lua crescente no joelho",
       titulo: "Criatura alada sob a lua",
       frase: "Nem tudo que tem asas foi feito para o céu.",
@@ -54,6 +56,7 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t04-jack.webp",
+      arquivoAlta: "assets/tattoos/t04-jack-original.jpg",
       alt: "Tatuagem de Jack Skellington e Zero em moldura, no ombro",
       titulo: "Jack Skellington e Zero",
       obra: "O Estranho Mundo de Jack · Tim Burton, 1993",
@@ -63,6 +66,7 @@ window.DADOS = {
     },
     {
       arquivo: "assets/tattoos/t05-rosa.webp",
+      arquivoAlta: "assets/tattoos/t05-rosa-original.jpg",
       alt: "Tatuagem de rosa vermelha com pétalas caindo, no braço",
       titulo: "A rosa e as pétalas",
       frase: "Toda rosa guarda a lembrança do que deixou cair.",

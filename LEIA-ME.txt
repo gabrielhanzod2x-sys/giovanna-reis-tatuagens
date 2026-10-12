@@ -72,10 +72,16 @@ HISTÓRIAS DAS TATTOOS
    o campo "obra", com o filme de origem do personagem.
 
 FOTO DA GIOVANNA
-   assets/giovanna.webp está em 480x640, que é a maior
-   resolução disponível. Fica levemente borrada no
-   quadro grande. Se houver o original em resolução
-   maior, basta substituir.
+   A foto exibida agora é assets/giovanna-4k.jpg,
+   com 3000x4000 pixels. O WebP antigo permanece como
+   arquivo de reserva.
+
+IMAGENS DAS TATUAGENS
+   Os quadros do carrossel usam WebP para carregar rápido.
+   Ao abrir a história de quatro tatuagens, a foto troca
+   para o original de maior resolução disponível. Os
+   demais originais são menores que 4K; é preciso obter
+   as fotos originais da Gio para ter detalhe real em 4K.
 
 DUAS TATTOOS SEM IDENTIFICAÇÃO
    - "O Noel no painel listrado": provável Papai Noel
@@ -95,7 +101,7 @@ js/main.js             comportamento
 assets/fundo.webp      fundo global
 assets/logo.webp       selo circular
 assets/gato.webp       gato recortado do logo (seção 6)
-assets/giovanna.webp   foto da artista
+assets/giovanna-4k.jpg foto da artista exibida
 assets/molduras/       as 3 molduras (retangular, oval, circular)
 assets/tattoos/        13 fotos do portfólio
 assets/videos/         3 vídeos das memórias
@@ -106,12 +112,13 @@ assets/audio/          trilha
 =====================================================
 OTIMIZAÇÃO PARA CELULAR
 =====================================================
-Site: 42 MB → 9,7 MB. Primeira tela: 779 KB.
-
-- Imagens em WebP no tamanho que aparecem (25,2 MB → 1,1 MB)
+- Imagens do carrossel em WebP no tamanho que aparecem
+- Quatro fotos originais maiores carregadas só ao abrir a história
 - Vídeos reencodados em 540px, sem áudio (14 MB → 5,8 MB)
 - Vídeos com preload="metadata": só baixam ao chegar na seção
 - Carrossel com arrasto pelo dedo
+- Primeiro vídeo encurtado de 17,77 s para 16,77 s
+- Atalhos de WhatsApp e Instagram sempre visíveis
 - Alvos de toque ampliados (pontos e menu)
 - Sem rolagem horizontal em 375px
 

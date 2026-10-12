@@ -482,7 +482,7 @@
 
     art.innerHTML =
       '<div class="mold__janela">' +
-      '<img src="' + tattoo.arquivo + '" alt="' + escapar(tattoo.alt) + '" loading="lazy">' +
+      '<img src="' + tattoo.arquivo + '" alt="' + escapar(tattoo.alt) + '" loading="lazy" draggable="false">' +
       "</div>" +
       '<span class="mold__arte" aria-hidden="true"></span>' +
       '<span class="cartao__etiqueta">clique para conhecer a história</span>';
@@ -656,13 +656,16 @@
       corriaAntes = correndo;
       correndo = false;
       if (animacaoManual) { cancelAnimationFrame(animacaoManual); animacaoManual = null; }
-      janela.setPointerCapture?.(ev.pointerId);
     });
 
     janela.addEventListener("pointermove", (ev) => {
       if (!arrastando || !trilho) return;
       const avanco = ev.clientX - partidaX;
       percorrido = Math.max(percorrido, Math.abs(avanco));
+      // Capturar antes do arrasto redireciona o clique do cartão para a janela.
+      if (percorrido > 8 && !janela.hasPointerCapture?.(ev.pointerId)) {
+        janela.setPointerCapture?.(ev.pointerId);
+      }
       deslocamento = partidaDeslocamento + avanco;
 
       // a fita é cíclica: emenda nas duas pontas
@@ -677,11 +680,13 @@
     function soltar(ev) {
       if (!arrastando) return;
       arrastando = false;
-      janela.releasePointerCapture?.(ev.pointerId);
+      if (janela.hasPointerCapture?.(ev.pointerId)) {
+        janela.releasePointerCapture(ev.pointerId);
+      }
       correndo = corriaAntes;
     }
-    janela.addEventListener("pointerup", soltar);
-    janela.addEventListener("pointercancel", soltar);
+    window.addEventListener("pointerup", soltar);
+    window.addEventListener("pointercancel", soltar);
 
     // arrastar não pode abrir a história sem querer
     janela.addEventListener("click", (ev) => {
@@ -718,7 +723,7 @@
     const t = DADOS.tattoos[indice];
     if (!t) return;
 
-    painelImg.src = t.arquivo;
+    painelImg.src = t.arquivoAlta || t.arquivo;
     painelImg.alt = t.alt;
     painelTit.textContent = t.titulo;
 
