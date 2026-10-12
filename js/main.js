@@ -1017,15 +1017,25 @@
     );
   }
 
+  const numeroValido = (n) => !!(n && /^\d{10,15}$/.test(n));
+
   $$("[data-wa]").forEach((a) => {
-    if (temZap()) {
-      a.href = linkZap("");
+    // o botao do parceiro tem numero proprio; os demais sao da Gio
+    const doParceiro = a.dataset.wa === "parceiro";
+    const numero = doParceiro ? (DADOS.whatsappParceiro || "") : (DADOS.whatsapp || "");
+
+    if (numeroValido(numero)) {
+      a.href = "https://wa.me/" + numero;
       a.target = "_blank";
       a.rel = "noopener noreferrer";
     } else {
       a.addEventListener("click", (ev) => {
         ev.preventDefault();
-        avisarSemZap();
+        if (doParceiro) {
+          sussurrar("O WhatsApp do Tiagão Tattoo Crew ainda não foi informado.");
+        } else {
+          avisarSemZap();
+        }
       });
     }
   });

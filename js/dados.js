@@ -27,6 +27,15 @@ window.DADOS = {
      ------------------------------------------------------- */
   whatsapp: "5535984292368",
 
+  /* -------------------------------------------------------
+     PARCEIRO — Tiagao Tattoo Crew
+     Informado como 35 8877-2292 (8 digitos). Gravado com o
+     nono digito que todo celular do Brasil tem desde 2016.
+     Se o certo for sem o 9, troque para "553588772292".
+     ------------------------------------------------------- */
+  whatsappParceiro: "5535988772292",
+  instagramParceiro: "https://instagram.com/tiagaotattoocrew",
+
   instagram: "gio.tattooink",
   instagramUrl: "https://instagram.com/gio.tattooink",
   instagramDireta: "https://ig.me/m/gio.tattooink",
