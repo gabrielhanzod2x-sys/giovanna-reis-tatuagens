@@ -635,14 +635,15 @@ ul{ margin:0; padding:0; list-style:none; }
   grid-template-columns:minmax(300px,.92fr) minmax(300px,1fr);
   align-items:center;
   gap:clamp(30px,5vw,84px);
-  width:100%; max-width:1240px;
+  width:100%; max-width:1320px;
 }
 
 /* ---- quadro (moldura oval) ---- */
 .quadro{
   margin:0;
   justify-self:center;
-  width:clamp(282px,33vw,470px);
+  width:clamp(310px,37vw,540px);
+  max-width:100%;
 }
 
 .quadro .mold__janela img{
@@ -1115,9 +1116,9 @@ ul{ margin:0; padding:0; list-style:none; }
 
 .memorias__grade{
   display:grid;
-  grid-template-columns:1fr;
-  gap:clamp(48px,6vw,110px);
-  width:100%; max-width:1050px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(22px,2.6vw,48px);
+  width:100%; max-width:1360px;
 }
 
 /* ---- moldura de memória ---- */
@@ -2030,7 +2031,16 @@ ul{ margin:0; padding:0; list-style:none; }
   .nav__regua::before{ left:0; }
   .nav__regua::after { right:0; }
 
-  .memorias__grade{ grid-template-columns:1fr; max-width:400px; gap:38px; }
+  .memorias__grade{
+    grid-template-columns:none;
+    grid-auto-flow:column;
+    grid-auto-columns:min(78vw,380px);
+    max-width:100%; gap:18px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    padding-bottom:14px;
+  }
+  .memoria{ scroll-snap-align:center; }
 
   .ideias__gato{
     position:static; width:clamp(110px,22vw,160px);
@@ -2068,7 +2078,7 @@ ul{ margin:0; padding:0; list-style:none; }
   .inicio__contatos{ gap:14px; }
   .placa{ min-width:0; width:100%; max-width:290px; padding:13px 22px; }
 
-  .quadro{ width:min(330px,86vw); }
+  .quadro{ width:min(370px,100%); }
 
   .carrossel__seta{ display:none; }
   .carrossel__janela{
