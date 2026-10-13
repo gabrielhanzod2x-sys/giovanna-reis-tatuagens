@@ -140,18 +140,29 @@
     const tile = fazerTile();
 
     /* ---- camadas: escala, velocidade, subida, opacidade ---- */
-    const camadas = [
-      { esc: 2.60, vx: 0.0100, vy: 0.0042, op: 0.22, fase: 0 },
-      { esc: 1.55, vx: 0.0175, vy: 0.0068, op: 0.15, fase: 90 },
-      { esc: 0.95, vx: 0.0290, vy: 0.0105, op: 0.09, fase: 170 }
-    ];
+    // em tela de toque: duas camadas em vez de tres, e opacidade
+    // compensada para a nevoa nao ficar mais rala do que no desktop
+    const aparelhoLeve =
+      window.matchMedia("(hover:none) and (pointer:coarse)").matches ||
+      window.innerWidth <= 980;
+
+    const camadas = aparelhoLeve
+      ? [
+          { esc: 2.60, vx: 0.0100, vy: 0.0042, op: 0.26, fase: 0 },
+          { esc: 1.40, vx: 0.0200, vy: 0.0078, op: 0.16, fase: 110 }
+        ]
+      : [
+          { esc: 2.60, vx: 0.0100, vy: 0.0042, op: 0.22, fase: 0 },
+          { esc: 1.55, vx: 0.0175, vy: 0.0068, op: 0.15, fase: 90 },
+          { esc: 0.95, vx: 0.0290, vy: 0.0105, op: 0.09, fase: 170 }
+        ];
 
     let larg = 0, alt = 0, dpr = 1;
 
     function medir() {
       const r = tela.getBoundingClientRect();
       if (!r.width || !r.height) return false;
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, aparelhoLeve ? 1 : 2);
       larg = r.width; alt = r.height;
       tela.width = Math.round(larg * dpr);
       tela.height = Math.round(alt * dpr);
@@ -525,6 +536,8 @@
   function medirFita() {
     if (!trilho) return;
     meiaFita = trilho.scrollWidth / 2;
+    basesCartoes = [];
+    medirCartoes();
   }
 
   function passo() {
@@ -541,26 +554,41 @@
   /* ---- cartão em destaque: o que estiver mais ao centro ---- */
   let destaqueAtual = null;
 
+  /* posicao de cada cartao, medida UMA vez.
+     Antes isto lia o layout dos 26 cartoes a cada quadro — cerca de
+     1.560 leituras por segundo, que era o que travava no celular.
+     Agora o quadro so faz aritmetica. */
+  let basesCartoes = [];
+  let centroJanela = 0;
+
+  function medirCartoes() {
+    if (!janela || !cartoes.length) return;
+    const cj = janela.getBoundingClientRect();
+    centroJanela = cj.width / 2;
+    basesCartoes = cartoes.map((c) => {
+      const r = c.getBoundingClientRect();
+      return (r.left - cj.left) + r.width / 2 - deslocamento;
+    });
+  }
+
   function destacarCentro() {
     if (!janela || !cartoes.length) return;
-    const caixa = janela.getBoundingClientRect();
-    const centro = caixa.left + caixa.width / 2;
+    if (!basesCartoes.length) medirCartoes();
 
-    let eleito = null;
+    let eleito = -1;
     let menor = Infinity;
-
-    for (const c of cartoes) {
-      const cc = c.getBoundingClientRect();
-      if (cc.right < caixa.left - 80 || cc.left > caixa.right + 80) continue;
-      const d = Math.abs(cc.left + cc.width / 2 - centro);
-      if (d < menor) { menor = d; eleito = c; }
+    for (let i = 0; i < basesCartoes.length; i++) {
+      const d = Math.abs(basesCartoes[i] + deslocamento - centroJanela);
+      if (d < menor) { menor = d; eleito = i; }
     }
+    if (eleito < 0) return;
 
-    if (eleito && eleito !== destaqueAtual) {
+    const alvo = cartoes[eleito];
+    if (alvo !== destaqueAtual) {
       if (destaqueAtual) destaqueAtual.classList.remove("is-destaque");
-      eleito.classList.add("is-destaque");
-      destaqueAtual = eleito;
-      marcarPonto(Number(eleito.dataset.indice));
+      alvo.classList.add("is-destaque");
+      destaqueAtual = alvo;
+      marcarPonto(Number(alvo.dataset.indice));
     }
   }
 
@@ -845,43 +873,97 @@
      ======================================================= */
   const videos = $$(".memoria__palco");
 
+  // num celular, tres videos decodificando ao mesmo tempo engasga a
+  // pagina inteira. Em tela de toque toca so o que estiver mais a vista.
+  const umVideoPorVez =
+    window.matchMedia("(hover:none) and (pointer:coarse)").matches ||
+    window.innerWidth <= 980;
+
+  const pausadosAMao = new WeakSet();
+  const visibilidade = new Map();
+
+  function tocar(palco) {
+    const v = $(".memoria__video", palco);
+    if (v && v.paused && !pausadosAMao.has(palco)) v.play().catch(() => {});
+  }
+  function parar(palco) {
+    const v = $(".memoria__video", palco);
+    if (v && !v.paused) v.pause();
+  }
+
+  function ajustarVideos() {
+    if (umVideoPorVez) {
+      let melhor = null, maior = 0;
+      visibilidade.forEach((r, palco) => {
+        if (r > maior) { maior = r; melhor = palco; }
+      });
+      videos.forEach((palco) => (palco === melhor && maior > 0.25) ? tocar(palco) : parar(palco));
+    } else {
+      visibilidade.forEach((r, palco) => (r > 0.25) ? tocar(palco) : parar(palco));
+    }
+  }
+
   videos.forEach((palco) => {
     const video = $(".memoria__video", palco);
     const play  = $(".memoria__play", palco);
     if (!video || !play) return;
 
-    // mudos e em laço: rodam sozinhos. O botão vira pausa.
-    let pausadoAMao = false;
+    visibilidade.set(palco, 0);
 
     play.addEventListener("click", () => {
       if (video.paused) {
-        pausadoAMao = false;
+        pausadosAMao.delete(palco);
         video.play().catch(() => {});
       } else {
-        pausadoAMao = true;
+        pausadosAMao.add(palco);
         video.pause();
       }
     });
 
     video.addEventListener("playing", () => palco.classList.add("is-tocando"));
     video.addEventListener("pause",   () => palco.classList.remove("is-tocando"));
-
-    // só gasta bateria enquanto está à vista
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(
-        (entradas) => {
-          entradas.forEach((e) => {
-            if (e.isIntersecting) {
-              if (!pausadoAMao) video.play().catch(() => {});
-            } else if (!video.paused) {
-              video.pause();
-            }
-          });
-        },
-        { threshold: 0.25 }
-      ).observe(palco);
-    }
   });
+
+  if ("IntersectionObserver" in window && videos.length) {
+    const olhoVideo = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((e) => visibilidade.set(e.target, e.isIntersecting ? e.intersectionRatio : 0));
+        ajustarVideos();
+      },
+      { threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+    videos.forEach((palco) => olhoVideo.observe(palco));
+  }
+
+  /* Sem autoplay no HTML, quem decide quem toca e o JS. O observador
+     e o caminho principal; a rolagem e a rede de seguranca, caso ele
+     demore ou a pessoa caia direto na secao pelo link. Mede so os 3
+     palcos e no maximo 5 vezes por segundo. */
+  function medirVisibilidadeAgora() {
+    const alturaTela = window.innerHeight || 1;
+    videos.forEach((palco) => {
+      const r = palco.getBoundingClientRect();
+      const visivel = Math.max(0, Math.min(r.bottom, alturaTela) - Math.max(r.top, 0));
+      visibilidade.set(palco, r.height > 0 ? visivel / r.height : 0);
+    });
+  }
+
+  if (videos.length) {
+    let agendado = null;
+    const reavaliar = () => {
+      if (agendado) return;
+      agendado = setTimeout(() => {
+        agendado = null;
+        medirVisibilidadeAgora();
+        ajustarVideos();
+      }, 200);
+    };
+    window.addEventListener("scroll", reavaliar, { passive: true });
+    window.addEventListener("resize", reavaliar, { passive: true });
+
+    medirVisibilidadeAgora();
+    ajustarVideos();
+  }
 
   /* =======================================================
      TRILHA

@@ -92,7 +92,6 @@ ul{ margin:0; padding:0; list-style:none; }
 .fundo{
   position:fixed; inset:0; z-index:-3;
   background:url("../assets/fundo.webp") center center / cover no-repeat;
-  background-attachment:fixed;
   transform:scale(1.04);
   animation:respirar 46s ease-in-out infinite;
 }
@@ -2242,4 +2241,34 @@ ul{ margin:0; padding:0; list-style:none; }
   }
   .revelar,.revelar-nevoa{ opacity:1; transform:none; filter:none; }
   .carrossel__trilho{ transform:none !important; }
+}
+
+
+/* =========================================================
+   ALIVIO PARA CELULAR
+   ---------------------------------------------------------
+   Telas de toque tem menos folego de GPU. Aqui desligam-se as
+   camadas de tela cheia que repintam sem parar e reduz-se o
+   numero de sombras compostas, sem mexer na composicao.
+   ========================================================= */
+@media (max-width:980px), (hover:none) and (pointer:coarse){
+
+  /* camadas de tela inteira paradas: o fundo continua, so nao respira */
+  .fundo{ animation:none; transform:scale(1.02); }
+  .poeira{ animation:none; opacity:.34; }
+
+  /* a nevoa da barra desenha menos */
+  .nav__bruma{ opacity:.7; }
+
+  /* drop-shadow em 31 molduras e caro; a sombra sai, a arte fica */
+  .mold__arte{ filter:none; }
+  .cartao.is-destaque .mold__arte,
+  .cartao.is-aberto .mold__arte,
+  .memoria:hover .mold__arte{ filter:none; }
+
+  /* o blur do veu do dialogo e dos campos pesa no scroll */
+  .veu{ backdrop-filter:none; background:rgba(4,5,11,.92); }
+
+  /* menos camadas compostas no carrossel */
+  .cartao{ box-shadow:none; }
 }
